@@ -50,6 +50,13 @@ function basketProduct() {
         return JSON.parse(basket);
     }
 };
+
+//Faut appeler l'api quand j'affichej elance la fontion je recupere dans mon local mes canap et chq canap faire un appel apiXsa quantité mettre dans une variable et appeler l'api
+//1er etape au chargement de la page je recup mon local storage
+//crée une variable a o length = 0 quandn je recup je met dans ma variable 
+//JE boucle sur mon panier et sur chq canape 
+//chq fois que j'ai un canap j'appel l'api
+//L'api va renvoyer le prix du cana^que je vais mutlplier par la quantite qui est dans mon local storage
 //sauvegarder le localstorage pour enregistrer les données dans le navigateur web
 function saveProductCart(productForCart) {
     localStorage.setItem("product", JSON.stringify(productForCart));
