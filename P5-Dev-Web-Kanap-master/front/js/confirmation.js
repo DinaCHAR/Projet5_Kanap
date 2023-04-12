@@ -1,4 +1,5 @@
-//récupération et affichage orderId Requête JSON contenant un objet de contact et un tableau de produits
+//récupération et affichage orderId Requête JSON contenant un objet de contact et 
+//un tableau de produits
 function getOrderIdConfirm() {
     const orderId = document.querySelector("#orderId")
     orderId.innerHTML =  getIdConfirm()

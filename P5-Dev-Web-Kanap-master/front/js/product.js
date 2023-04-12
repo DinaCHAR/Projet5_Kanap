@@ -79,6 +79,7 @@ function verifFormOptionColors() {
     const addCart = document.querySelector("#addToCart")
        addCart.addEventListener("click", ()=>{
         
+        //supp les artciles en fonction de leur couleur et leur id
         if (verifFormOptionColors()) {
             const productWithOptionAndQantity =  Object.assign( product, getOptionAndQuantity() );
             delete productWithOptionAndQantity.price

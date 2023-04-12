@@ -96,6 +96,7 @@ function removeItem(productCart) {
         const deleteBtn = document.querySelectorAll(".productInCart")
 
         for (let j = 0; j < deleteBtn.length; j++) {
+          //addEventListener pour voir les changement au niveau de la quantité 
             deleteBtn[j].addEventListener("click", ()=>{
                 
                 //supp le produit sélectionné
@@ -184,6 +185,7 @@ function getFormordered() {
   const cityError = document.querySelector("#cityErrorMsg");
   const emailError = document.querySelector("#emailErrorMsg");
 
+  //regex message d'erreur pour la parti coordonées
   //permet de renvoyer les erreurs 
   if (!/^[A-Za-z]{3,20}$/.test(firstName)) {
     firstNameError.textContent = "Les chiffre et les caractères ne sont pas autorisé, il doit y avoir entre 3 et 20 caractères"
@@ -199,7 +201,7 @@ function getFormordered() {
     return false
     //auto qui se fait dans  un input email remplacer type 
   }else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-    emailError.textContent = `L'email doit contenir au moins un "@" aisin q'un "."`
+    emailError.textContent = `L'email doit contenir au moins un "@" ainsi q'un "."`
     return false
   }else{
     return true
