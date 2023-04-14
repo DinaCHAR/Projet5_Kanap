@@ -78,13 +78,12 @@ function verifFormOptionColors() {
  function regroupOptionQuantityAndProduct(product) {
     const addCart = document.querySelector("#addToCart")
        addCart.addEventListener("click", ()=>{
-        
         //supp les artciles en fonction de leur couleur et leur id
         if (verifFormOptionColors()) {
             const productWithOptionAndQantity =  Object.assign( product, getOptionAndQuantity() );
             delete productWithOptionAndQantity.price
              addBasket(productWithOptionAndQantity) 
-             window.location.href = `cart.html`; 
+             window.location.href = `cart.html`;
         }else{
              alert("veuillez choisir une couleur et une quantité")
            }
@@ -94,7 +93,13 @@ function verifFormOptionColors() {
 }
 
 //mettre l'objet dans le local storage et le transformer en json
+//Supp le price du localstorage
  function saveProduct(product) {
+    for (let item of product) {
+        delete item.price;
+    }
+      console.log("saveProduct product.js");
+      console.log(product);
       localStorage.setItem("product", JSON.stringify(product));
 };
 
@@ -111,10 +116,12 @@ function cartProduct() {
 // Ajouter un produit
  function addBasket(product) {
     let basket = cartProduct();
+    /*delete product.price;*/
+    console.log(product)
     let quantity = document.querySelector("#quantity")
     
     let foundProduct = basket.find(p => p._id == product._id && p.option == product.option);
-
+    console.log(product);
     if (foundProduct != undefined) {
         
          foundProduct.quantity ++ ;

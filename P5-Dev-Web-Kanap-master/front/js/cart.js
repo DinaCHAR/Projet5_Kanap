@@ -3,11 +3,10 @@ mainCart();
 //fonction global panier
 async function mainCart(){
     const productInCart = await basketProduct();
-    
-    
     console.log(productInCart);
     
    //Afficher le prix total du produit
+   //let permet de déclarer une variable dont la portée est celle du bloc courant, eventuellement en initialisant sa valeur
     for (let i = 0; i < productInCart.length; i++) {
       const prodCart = await getArticlesCart(productInCart[i]._id)
 
@@ -42,8 +41,10 @@ async function mainCart(){
  
 //recuperer les éléments du localStorage
 function basketProduct() {
+  //.getItem pour appeler le loclastorage
     let basket =  localStorage.getItem("product");
     
+    console.log(basket);
     if (basket === null) {
         return [];
     }else{
@@ -59,8 +60,27 @@ function basketProduct() {
 //L'api va renvoyer le prix du cana^que je vais mutlplier par la quantite qui est dans mon local storage
 //sauvegarder le localstorage pour enregistrer les données dans le navigateur web
 function saveProductCart(productForCart) {
+    //boucle pour supp le prix
+    for (let item of productForCart) {
+        delete item.price;
+    }
+    console.log("saveProductCart cart.js");
+    console.log(productForCart);
     localStorage.setItem("product", JSON.stringify(productForCart));
+
 };
+
+//Appelle l'API en GET et retourne une promesse avec les données
+ const getItems = () => {
+  return new Promise((resolve, reject) => {
+      fetch(address)
+          .then(response => response.json())
+          .then(data => resolve(data))
+          .catch(err => reject(err))
+  });
+};
+
+
 //afficher les élément du panier depuis le localStorage
 
 function displayProductBasket(productBasket) {
